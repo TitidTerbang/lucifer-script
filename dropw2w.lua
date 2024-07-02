@@ -1,9 +1,10 @@
 bot = getBot()
 id = 4562 --item id
+ready = true
 
-dropworld = "RELKQ|ECER"
+dropworld = "RELKQ|ECER" --WORLD|ID CONTOH PEPEK|PERAPATPUKI
 
-platworld = "STOFLOUR69|ECER"
+platworld = "STOFLOUR69|ECER" --WORLD|ID CONTOH PEPEK|PERAPATPUKI
 
 function take()
     for _, obj in pairs(getObjects()) do
@@ -17,9 +18,11 @@ function take()
             if bot:getInventory():findItem(id) >= 50 then
                 break
             end
+        else
+            bot:leave()
+            ready = false
         end
     end
-    bot:leave()
 end
 
 function movedrop()
@@ -59,10 +62,10 @@ function jalan()
     movedrop()
 end
 
-while true do
+while ready do
     jalan()
 end
 
 --fitur
--- 1. no item di world = disconnect ✔
+-- 1. no item di world = leave ✔
 -- 2. tes drop
